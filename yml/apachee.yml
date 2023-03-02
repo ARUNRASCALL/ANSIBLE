@@ -1,0 +1,20 @@
+--- # install handlers
+- hosts: all
+  become: true
+  tasks:
+  - name: install
+    yum: 
+      name: httpd
+      state: present
+
+  - name: index
+    copy:
+      src: /home/ansi/index.html
+      dest: /var/www/html
+      mode: 0777
+    notify: run  
+  handlers:
+  - name: run
+    service: 
+      name: httpd
+      state: restarted  
