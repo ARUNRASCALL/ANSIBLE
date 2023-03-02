@@ -1,0 +1,28 @@
+
+---
+- name: Install Apache on RHEL server
+  hosts: all
+  become: true
+  tasks:
+    - name: httpd installation  
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Configure Apache 
+      copy:
+        src: /home/ansi/index.html
+        dest: /var/www/html
+        mode: 0644
+
+      notify:
+      - Start Apache   
+
+
+  handlers:
+
+     - name: Start Apache
+       service:
+         name: httpd
+         state: started
+
