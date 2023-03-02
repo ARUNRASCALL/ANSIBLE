@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 this file has all users w8 sudo permissions
+=======
+sudo permission is only for root user by default
+>>>>>>> main
