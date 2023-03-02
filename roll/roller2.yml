@@ -1,0 +1,7 @@
+--- # playbook for apache and tomcat in two distros
+
+
+- hosts: all
+  become: true
+  roles:
+  - roller  

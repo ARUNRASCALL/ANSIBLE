@@ -1,0 +1,27 @@
+---
+# handlers file for roller
+#
+#
+#
+- name: start service
+  service:
+    name: httpd
+    state: started
+  when: ansible_os_family == "RedHat"
+
+- name: start service
+  service:
+    name: apache2
+    state: started
+  when: ansible_os_family == "Debian"
+
+- name: shutdown
+  shell: shutdown.sh
+  args:
+    chdir: /opt/apache-tomcat-9.0.72/bin
+
+- name: startup
+  shell: startup.sh
+  args:
+    chdir: /opt/apache-tomcat-9.0.72/bin     
+
